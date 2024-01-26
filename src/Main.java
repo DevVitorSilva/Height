@@ -20,6 +20,12 @@ public class Main {
             System.out.print("Height: ");
             heights[i] = sc.nextDouble();
         }
+        double average = 0.0;
+        for(int i = 0; i < heights.length; i++){
+            average += heights[i];
+        }
+        average = average / heights.length;
+        System.out.printf("Average height: %.2f\n", average);
         sc.close();
     }
 }

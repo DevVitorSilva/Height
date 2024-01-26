@@ -21,11 +21,22 @@ public class Main {
             heights[i] = sc.nextDouble();
         }
         double average = 0.0;
-        for(int i = 0; i < heights.length; i++){
+        double minorSixteen = 0;
+        for(int i = 0; i < quantity; i++){
+            if(ages[i] < 16){
+                minorSixteen += 1;
+            }
             average += heights[i];
         }
+        double percentage = (minorSixteen / quantity) * 100;
         average = average / heights.length;
         System.out.printf("Average height: %.2f\n", average);
+        System.out.printf("People under sixteen: %.2f%s\n", percentage, "%");
+        for(int i = 0; i < quantity; i++){
+            if(ages[i] < 16){
+                System.out.printf("%s\n", names[i]);
+            }
+        }
         sc.close();
     }
 }

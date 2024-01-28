@@ -5,6 +5,10 @@ public class People {
     private double height;
     private int age;
 
+    public People(String name){
+        this.name = name;
+    }
+
     public People(String name, double height, int age){
         this.age = age;
         this.height = height;

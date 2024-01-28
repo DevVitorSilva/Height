@@ -1,3 +1,5 @@
+import entity.People;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -7,34 +9,33 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.print("How many people will be registered? ");
         int quantity = sc.nextInt();
-        String[] names = new String[quantity];
-        int[] ages = new int[quantity];
-        double[] heights = new double[quantity];
+        People[] people = new People[quantity];
+
         for(int i = 0; i < quantity; i++){
             System.out.printf("Person %da data:\n", i + 1);
             System.out.print("Name: ");
             sc.nextLine();
-            names[i] = sc.nextLine();
+            people[i] = new People(sc.nextLine());
             System.out.print("Age: ");
-            ages[i] = sc.nextInt();
+            people[i].setAge(sc.nextInt());
             System.out.print("Height: ");
-            heights[i] = sc.nextDouble();
+            people[i].setHeight(sc.nextDouble());
         }
         double average = 0.0;
         double minorSixteen = 0;
         for(int i = 0; i < quantity; i++){
-            if(ages[i] < 16){
+            if(people[i].getAge() < 16){
                 minorSixteen += 1;
             }
-            average += heights[i];
+            average += people[i].getHeight();
         }
         double percentage = (minorSixteen / quantity) * 100;
-        average = average / heights.length;
+        average = average / quantity;
         System.out.printf("Average height: %.2f\n", average);
         System.out.printf("People under sixteen: %.2f%s\n", percentage, "%");
         for(int i = 0; i < quantity; i++){
-            if(ages[i] < 16){
-                System.out.printf("%s\n", names[i]);
+            if(people[i].getAge() < 16){
+                System.out.printf("%s\n", people[i].getName());
             }
         }
         sc.close();
